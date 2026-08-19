@@ -1,6 +1,6 @@
 <div align="center">
 
-$$\text{total\_seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$$
+$$\text{total seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$$
 
 </div>
 
