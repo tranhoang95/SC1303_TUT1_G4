@@ -1,4 +1,4 @@
-# Tutorial 1: Seconds to Time Converter
+## Tutorial 1: Seconds to Time Converter
 
 ### **Team Members**
 
