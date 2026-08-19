@@ -15,24 +15,31 @@ There are $86,400$ seconds in a day ($24 \times 60 \times 60$). Given a number i
 
 ### Implementation (`solution.py`)
 
-The solution is implemented in Python, leveraging integer division (`//`) and the modulo operator (`%`) to split the total seconds progressively into hours, minutes, and remaining seconds.
+To solve this problem cleanly, our team implemented and evaluated two distinct programming paradigms:
 
-```python
-def convert_seconds_to_time(total_seconds):
-    if not 1 <= total_seconds <= 86400:
-        print("Error: Input seconds must be between 1 and 86,400.")
-        return None, None, None
+#### Approach 1: Direct Mathematical Derivation
+This approach is based on the fundamental algebraic equation of time:
+$$\text{total\_seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$$
 
-    hours = total_seconds // 3600
-    remainder_seconds = total_seconds % 3600
-    minutes = remainder_seconds // 60
-    seconds = remainder_seconds % 60
-    
-    return hours, minutes, seconds
+From this formula, we mathematically derive each time unit component:
+1. **Hours**: Since 1 hour equals 3,600 seconds, the number of completed hours is the integer quotient of the total seconds divided by 3,600:
+   $$\text{hours} = \lfloor \frac{\text{total\_seconds}}{3600} \rfloor$$
+2. **Seconds**: The seconds component represents the remaining seconds that cannot form a whole minute. Thus, it is the remainder when the total seconds is divided by 60:
+   $$\text{seconds} = \text{total\_seconds} \pmod{60}$$
+3. **Minutes**: Once we have isolated the `hours` and `seconds`, we can subtract their contributions from the `total_seconds`. The leftover value represents the total seconds contributed solely by whole minutes. Dividing this value by 60 yields our target minutes:
+   $$\text{minutes} = \frac{\text{total\_seconds} - (\text{hours} \times 3600) - \text{seconds}}{60}$$
 
-if __name__ == "__main__":
-    input_seconds = 70000
-    hours, minutes, seconds = convert_seconds_to_time(input_seconds)
-    if hours is not None:
-        print(f"Input: {input_seconds:,} seconds")
-        print(f"Output: {hours} hours, {minutes} minutes, and {seconds} seconds.")
+
+#### Approach 2: Base-60 (Sexagesimal) Positional System
+Standard time-keeping is fundamentally a **sexagesimal (base-60)** system. 
+
+Just as a decimal (base-10) number like $769_{10}$ is structured as:
+$$7 \times 10^2 + 6 \times 10^1 + 9 \times 10^0$$
+
+A time representation can be modeled as a base-60 number system where:
+$$\text{Time} = d_2 \cdot 60^2 + d_1 \cdot 60^1 + d_0 \cdot 60^0$$
+$$\text{Time} = \text{hours} \cdot 3600 + \text{minutes} \cdot 60 + \text{seconds}$$
+
+We designed a **generalized base converter** (`decimal_to_any_base`) that translates any base-10 decimal integer into its positional representation in base $B$. By setting **$B = 60$**, the output digits mapped directly to our desired hours, minutes, and seconds.
+
+
