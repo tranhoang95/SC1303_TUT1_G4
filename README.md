@@ -19,26 +19,22 @@ To solve this problem cleanly, our team implemented and evaluated two distinct p
 
 #### Approach 1: Direct Mathematical Derivation
 This approach is based on the fundamental algebraic equation of time:
-$$\text{total\_seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$$
+$$\text{total seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$$
 
 From this formula, we mathematically derive each time unit component:
-1. **Hours**: Since 1 hour equals 3,600 seconds, the number of completed hours is the integer quotient of the total seconds divided by 3,600:
-   $$\text{hours} = \lfloor \frac{\text{total\_seconds}}{3600} \rfloor$$
+1. **Hours**: Since 1 hour equals 3,600 seconds, the number of completed hours is the integer quotient of the total seconds divided by $3600$:
+   $$\text{hours} = \lfloor \frac{\text{total seconds}}{3600} \rfloor$$
 2. **Seconds**: The seconds component represents the remaining seconds that cannot form a whole minute. Thus, it is the remainder when the total seconds is divided by 60:
-   $$\text{seconds} = \text{total\_seconds} \pmod{60}$$
+   $$\text{seconds} = \text{total seconds} \pmod{60}$$
 3. **Minutes**: Once we have isolated the `hours` and `seconds`, we can subtract their contributions from the `total_seconds`. The leftover value represents the total seconds contributed solely by whole minutes. Dividing this value by 60 yields our target minutes:
-   $$\text{minutes} = \frac{\text{total\_seconds} - (\text{hours} \times 3600) - \text{seconds}}{60}$$
+   $$\text{minutes} = \frac{\text{total seconds} - (\text{hours} \times 3600) - \text{seconds}}{60}$$
 
 
 #### Approach 2: Base-60 (Sexagesimal) Positional System
 Standard time-keeping is fundamentally a **sexagesimal (base-60)** system. 
 
-Just as a decimal (base-10) number like $769_{10}$ is structured as:
-$$7 \times 10^2 + 6 \times 10^1 + 9 \times 10^0$$
-
 A time representation can be modeled as a base-60 number system where:
-$$\text{Time} = d_2 \cdot 60^2 + d_1 \cdot 60^1 + d_0 \cdot 60^0$$
-$$\text{Time} = \text{hours} \cdot 3600 + \text{minutes} \cdot 60 + \text{seconds}$$
+$$\text{total seconds} = \text{hours} \cdot 60^2 + \text{minutes} \cdot 60 + \text{seconds}$$
 
 We designed a **generalized base converter** (`decimal_to_any_base`) that translates any base-10 decimal integer into its positional representation in base $B$. By setting **$B = 60$**, the output digits mapped directly to our desired hours, minutes, and seconds.
 
