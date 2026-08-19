@@ -9,9 +9,9 @@
 
 ### Problem Statement
 
-There are 86,400 seconds in a day ($24 \times 60 \times 60$). Given a number in the range $1$ to $86,400$, output the current time as hours, minutes, and seconds on a 24-hour clock.
+There are $86,400$ seconds in a day ($24 \times 60 \times 60$). Given a number in the range $1$ to $86,400$, output the current time as hours, minutes, and seconds on a $24$-hour clock.
 
-* **Example:** 70,000 seconds is 19 hours, 26 minutes, and 40 seconds.
+* **Example:** $70,000$ seconds is $19$ hours, $26$ minutes, and $40$ seconds.
 
 ### Implementation (`solution.py`)
 
