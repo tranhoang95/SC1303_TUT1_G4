@@ -1,3 +1,9 @@
+<div align="center">
+
+$$\text{total\_seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$$
+
+</div>
+
 ## Tutorial 1: Seconds to Time Converter
 
 ### **Team Members**
