@@ -22,8 +22,7 @@ This approach is based on the fundamental algebraic equation of time:
 $$\text{total seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$$
 
 From this formula, we mathematically derive each time unit component:
-1. **Hours**: Since 1 hour equals 3,600 seconds, the number of completed hours is the integer quotient of the total seconds divided by $3600$:
-   $$\text{hours} = \lfloor \frac{\text{total seconds}}{3600} \rfloor$$
+1. **Hours**: Since 1 hour equals 3,600 seconds, the number of completed hours is the integer quotient of the total seconds divided by $3600$: $$\displaystyle \text{hours} = \lfloor \dfrac{\text{total seconds}}{3600} \rfloor$$
 2. **Seconds**: The seconds component represents the remaining seconds that cannot form a whole minute. Thus, it is the remainder when the total seconds is divided by 60:
    $$\text{seconds} = \text{total seconds} \pmod{60}$$
 3. **Minutes**: Once we have isolated the `hours` and `seconds`, we can subtract their contributions from the `total_seconds`. The leftover value represents the total seconds contributed solely by whole minutes. Dividing this value by 60 yields our target minutes:
