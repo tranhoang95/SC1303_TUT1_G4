@@ -13,7 +13,7 @@ There are $86,400$ seconds in a day ($24 \times 60 \times 60$). Given a number i
 
 * **Example:** $70,000$ seconds is $19$ hours, $26$ minutes, and $40$ seconds.
 
-### Implementation (`solution.py`)
+### Implementation
 
 To solve this problem cleanly, our team implemented and evaluated two distinct programming paradigms:
 
