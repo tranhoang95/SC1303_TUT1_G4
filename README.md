@@ -19,11 +19,15 @@ To solve this problem cleanly, our team implemented and evaluated two distinct p
 
 #### Approach 1: Direct Mathematical Derivation
 This approach is based on the fundamental algebraic equation of time:
-<div align="center"> $\text{total seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$ </div>
+<div align="center"> 
+   $\text{total seconds} = (\text{hours} \times 3600) + (\text{minutes} \times 60) + \text{seconds}$ 
+</div>
 
 From this formula, we mathematically derive each time unit component:
 1. **Hours**: Since 1 hour equals 3,600 seconds, the number of completed hours is the integer quotient of the total seconds divided by $3600$: 
-<div align="center"> $\displaystyle \text{hours} = \lfloor \dfrac{\text{total seconds}}{3600} \rfloor$ </div>
+<div align="center"> 
+   $\displaystyle \text{hours} = \lfloor \dfrac{\text{total seconds}}{3600} \rfloor$ 
+</div>
 2. **Seconds**: The seconds component represents the remaining seconds that cannot form a whole minute. Thus, it is the remainder when the total seconds is divided by 60:
    <div align="center"> $\text{seconds} = \text{total seconds} \pmod{60}$ </div>
 3. **Minutes**: Once we have isolated the `hours` and `seconds`, we can subtract their contributions from the `total_seconds`. The leftover value represents the total seconds contributed solely by whole minutes. Dividing this value by 60 yields our target minutes:
